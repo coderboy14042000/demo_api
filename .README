@@ -1,5 +1,7 @@
 # step to use
 
-1. npm install
-2. if got error then install require dependency.
-3. nodemon app.js
+0. take databse from db folder and import in xampp.
+1. check all details of database and other in .env file 
+2. npm install
+3. if got error then install require dependency.
+4. nodemon app.js
