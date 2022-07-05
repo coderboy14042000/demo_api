@@ -1,7 +1,7 @@
 # step to use
 
 0. take databse from db folder and import in xampp.
-1. check all details of database and other in .env file 
-2. npm install
+1. check all details of database and other in .env file.
+2. npm install.
 3. if got error then install required dependency(using npm).
-4. nodemon app.js
+4. for run :- nodemon app.js
