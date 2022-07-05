@@ -1,0 +1,5 @@
+# step to use
+
+1. npm install
+2. if got error then install require dependency.
+3. nodemon app.js
