@@ -1,0 +1,69 @@
+const { body } = require("express-validator/check");
+
+exports.validate = (method) => {
+  switch (method) {
+    case "searchEmployee": {
+      return [
+        body("name")
+          .isLength({ min: 3 }, { min: 150 })
+          .trim()
+          .escape()
+          .withMessage("Name is required filed."),
+        body("email", "Invalid email").isEmail().normalizeEmail(),
+        body("contact_no")
+          .isNumeric()
+          .isLength({ max: 10, min: 10 })
+          .withMessage("Enter Mobile Number with 10 Digit."),
+      ];
+    }
+
+    case "updateEmployee": {
+      return [
+        body("name")
+          .isLength({ min: 3 }, { max: 50 })
+          .trim()
+          .escape()
+          .withMessage("Name is required filed."),
+        body("email", "Invalid email").isEmail().normalizeEmail(),
+        body("contact_no")
+          .isNumeric()
+          .isLength({ max: 10, min: 10 })
+          .withMessage("Enter Mobile Number with 10 Digit."),
+        body("is_status")
+          .isIn(["Pending", "Active", "InActive"])
+          .withMessage("Only Pending, Active & InActive status accepted."),
+      ];
+    }
+
+    case "registration": {
+      return [
+        body("name")
+          .isLength({ min: 3 }, { max: 50 })
+          .trim()
+          .escape()
+          .withMessage("Name is required filed."),
+        body("email").isEmail().normalizeEmail().withMessage("Invalid email"),
+        body("password")
+          .isLength({ max: 8 })
+          .trim()
+          .withMessage("Enter Password with 8 character"),
+        body("contact_no")
+          .isNumeric()
+          .isLength({ max: 10, min: 10 })
+          .withMessage("Enter Mobile Number with 10 Digit."),
+        body("is_status")
+          .isIn(["Pending", "Active", "InActive"])
+          .withMessage("Only Pending, Active & InActive status accepted."),
+      ];
+    }
+    case "login": {
+      return [
+        body("email").isEmail().normalizeEmail().withMessage("Invalid email"),
+        body("password")
+          .isLength({ max: 8 })
+          .trim()
+          .withMessage("Enter Password with 8 character"),
+      ];
+    }
+  }
+};
