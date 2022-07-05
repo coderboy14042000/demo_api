@@ -1,5 +1,5 @@
 const { body } = require("express-validator/check");
-
+//here we export a validate method.
 exports.validate = (method) => {
   switch (method) {
     case "searchEmployee": {
@@ -16,7 +16,7 @@ exports.validate = (method) => {
           .withMessage("Enter Mobile Number with 10 Digit."),
       ];
     }
-
+    //here we validate a update employee field.
     case "updateEmployee": {
       return [
         body("name")
@@ -34,7 +34,7 @@ exports.validate = (method) => {
           .withMessage("Only Pending, Active & InActive status accepted."),
       ];
     }
-
+    //here we validate a registration field.
     case "registration": {
       return [
         body("name")
@@ -56,6 +56,7 @@ exports.validate = (method) => {
           .withMessage("Only Pending, Active & InActive status accepted."),
       ];
     }
+    //here we validate a login field.
     case "login": {
       return [
         body("email").isEmail().normalizeEmail().withMessage("Invalid email"),
