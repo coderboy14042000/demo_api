@@ -1,10 +1,13 @@
 const connection = require("../db/db.connection");
+
+//here we user helper to handel error message or json response.
 const helper=require('../helper/common.helper');
 
 module.exports = {
   
   uploadProfileImage: (req, res) => {
     try{
+      //here filename is a request parameter.
         if (req.file.filename) {
             let employee_id=req.params.id;
             let filePath='/upload/'+req.file.filename;
