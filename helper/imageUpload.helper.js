@@ -1,6 +1,6 @@
 const multer = require("multer");
 const path = require("path");
-
+//storage is use for set destination and file name.
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, './upload');
@@ -9,7 +9,8 @@ const storage = multer.diskStorage({
     callback(null, new Date().getTime() + path.extname(file.originalname));
   },
 });
-
+//here we check a file type.
+//only upload png and jpeg file.
 const fileFilter = (req, file, callback) => {
   if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
     callback(null, true);
@@ -17,7 +18,7 @@ const fileFilter = (req, file, callback) => {
     callback(new Error("Unsuported Files.(Please Upload Only Jpeg/png MaxSize 10Mb)."), false);
   }
 };
-
+//here we export upload method.
 module.exports = {
   upload: multer({
     storage: storage,
